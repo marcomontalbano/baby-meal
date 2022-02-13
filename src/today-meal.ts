@@ -22,7 +22,7 @@ export class TodayMeal extends LitElement {
       width: 100%;
       height: calc(100% - 40px);
       background: rgb(161,214,252);
-      background: linear-gradient(135deg, rgba(161,214,252,1) 0%, rgba(65,143,239,1) 50%, rgba(49,53,101,1) 50%, rgba(1,0,17,1) 100%);
+      background: linear-gradient(135deg, rgba(220,240,255,1) 0%, rgba(65,143,239,1) 50%, rgba(49,53,101,1) 50%, rgba(1,0,17,1) 100%);
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
     }
@@ -71,9 +71,12 @@ export class TodayMeal extends LitElement {
   `
 
   @property({ type: Number })
-  seed = 0
+  seed = -5
 
-  renderMeal(date: Dayjs = dayjs()) {
+  @property({ type: Dayjs })
+  date = dayjs()
+
+  renderMeal(date: Dayjs) {
     const seed = dayjs(0).add(this.seed, 'day')
 
     const { carbohydrate: lunchMealCarbohydrate, protein: lunchMealProtein } = getLunchMeal({ seed, date })
@@ -108,8 +111,29 @@ export class TodayMeal extends LitElement {
     })
   }
 
+  constructor() {
+    super()
+
+    let touchstartX = 0
+    let touchendX = 0
+
+    const handleGesture = () => {
+      if (touchendX < touchstartX) this.date = this.date.add(1, 'day')
+      if (touchendX > touchstartX) this.date = this.date.add(-1, 'day')
+    }
+
+    this.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX
+    })
+
+    this.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX
+      handleGesture()
+    })
+  }
+
   render() {
-    return this.renderMeal()
+    return this.renderMeal(this.date)
   }
 }
 
