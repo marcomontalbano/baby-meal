@@ -24,32 +24,8 @@ export class TodayMeal extends LitElement {
   @property({ type: Number })
   seed = 0
 
-  renderCalendar() {
-    const a = Array(30).fill(undefined).map((_, i) => {
-      const seed = dayjs(0).add(this.seed, 'day')
-      const date = dayjs().add(i, 'day')
-
-      const { carbohydrate: lunchMealCarbohydrate, protein: lunchMealProtein } = getLunchMeal({ seed, date })
-      const { carbohydrate: dinnerMealCarbohydrate } = getDinnerMeal({ seed, date })
-
-      return html`
-        <div>
-          <div>${date.format('dddd DD MMMM YYYY')}</div>
-          <div>${lunchMealProtein.name} - ${lunchMealCarbohydrate.name}</div>
-          <div>${dinnerMealCarbohydrate.name}</div>
-        </div>
-        <hr />
-      `
-    })
-
-    return html`
-      ${a}
-    `
-  }
-
-  render() {
+  renderMeal(date: Dayjs = dayjs()) {
     const seed = dayjs(0).add(this.seed, 'day')
-    const date = dayjs()
 
     const { carbohydrate: lunchMealCarbohydrate, protein: lunchMealProtein } = getLunchMeal({ seed, date })
     const { carbohydrate: dinnerMealCarbohydrate } = getDinnerMeal({ seed, date })
@@ -61,6 +37,19 @@ export class TodayMeal extends LitElement {
           <div>${dinnerMealCarbohydrate.name}</div>
         </div>
       `
+  }
+
+  render() {
+    return Array(30).fill(undefined).map((_, i) => {
+      return html`
+        ${this.renderMeal(dayjs().add(i, 'day'))}
+        <hr />
+      `
+    })
+  }
+
+  rendder() {
+    return this.renderMeal()
   }
 }
 
