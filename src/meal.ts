@@ -12,20 +12,20 @@ export type Carbohydrate = {
 
 type NotEmptyArrayOf<T> = [T, ...T[]]
 
-const proteinsA: NotEmptyArrayOf<Protein> = [
-  { name: 'Pollo', category: 'carne bianca' },
-  { name: 'Coniglio', category: 'carne bianca' },
-  { name: 'Tacchino', category: 'carne bianca' },
-  { name: 'Agnello', category: 'carne bianca' },
-  { name: 'Manzo', category: 'carne rossa' },
-  { name: 'Vitello', category: 'carne rossa' },
-  { name: 'Nasello', category: 'fish' },
-  { name: 'Spigola', category: 'fish' },
-  { name: 'Salmone', category: 'fish' },
-  { name: 'Orata', category: 'fish' },
-  { name: 'Platessa', category: 'fish' },
-  { name: 'Trota', category: 'fish' },
-]
+// const proteinsA: NotEmptyArrayOf<Protein> = [
+//   { name: 'Pollo', category: 'carne bianca' },
+//   { name: 'Coniglio', category: 'carne bianca' },
+//   { name: 'Tacchino', category: 'carne bianca' },
+//   { name: 'Agnello', category: 'carne bianca' },
+//   { name: 'Manzo', category: 'carne rossa' },
+//   { name: 'Vitello', category: 'carne rossa' },
+//   { name: 'Nasello', category: 'fish' },
+//   { name: 'Spigola', category: 'fish' },
+//   { name: 'Salmone', category: 'fish' },
+//   { name: 'Orata', category: 'fish' },
+//   { name: 'Platessa', category: 'fish' },
+//   { name: 'Trota', category: 'fish' },
+// ]
 
 export const proteins: NotEmptyArrayOf<Protein> = [
   { name: 'Pollo', category: 'carne bianca' },
