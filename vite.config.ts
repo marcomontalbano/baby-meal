@@ -17,10 +17,10 @@ export default defineConfig({
     })
   ],
   build: {
-    lib: {
-      entry: 'src/meal.ts',
-      formats: ['es'],
-    },
+    // lib: {
+    //   entry: 'src/meal.ts',
+    //   formats: ['es'],
+    // },
     rollupOptions: {
       // external: /^lit/,
       input: {

@@ -2,9 +2,9 @@ import dayjs, { Dayjs } from 'dayjs'
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
-import { getDinnerMeal, getLunchMeal } from './meal'
-import sun from './images/sunny.svg'
-import moon from './images/full-moon.svg'
+import { getDinnerMeal, getLunchMeal } from '../meal'
+import sun from '../images/sunny.svg'
+import moon from '../images/full-moon.svg'
 
 /**
  * An example element.
