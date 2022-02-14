@@ -40,7 +40,7 @@ export class TodayMeal extends LitElement {
     .day, .night {
       position: absolute;
       width: 50%;
-      height: 50%;
+      height: 65%;
       display: flex;
       display: flex;
       align-items: center;
@@ -48,14 +48,29 @@ export class TodayMeal extends LitElement {
       text-align: center;
       font-size: 18px;
       min-width: 250px;
+      overflow: hidden;
+    }
+
+    .day img, .night img {
+      position: absolute;
     }
 
     .day img {
       width: 150px;
+      width: 400px;
+
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
     }
 
     .night img {
       width: 100px;
+      width: 350px;
+
+      bottom: 0;
+      right: 0;
+      transform: translate(50%, 50%);
     }
 
     .day {
