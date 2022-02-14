@@ -111,25 +111,50 @@ export class TodayMeal extends LitElement {
     })
   }
 
+  private handleSwipe() {
+
+    let xDown: number | null = null
+    let yDown: number | null = null
+
+    document.addEventListener('touchstart', (event: TouchEvent) => {
+      xDown = event.changedTouches[0].screenX
+      yDown = event.changedTouches[0].screenY
+    });
+
+    document.addEventListener('touchend', (event: TouchEvent) => {
+      if (!xDown || !yDown) {
+        return;
+      }
+
+      const xUp = event.changedTouches[0].screenX;
+      const yUp = event.changedTouches[0].screenY;
+
+      const xDiff = xDown - xUp;
+      const yDiff = yDown - yUp;
+
+      if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
+        if (xDiff > 0) { // right swipe
+          this.date = this.date.add(1, 'day')
+        } else { // left swipe
+          this.date = this.date.add(-1, 'day')
+        }
+      } else {
+        // if (yDiff > 0) { // down swipe
+        //   this.seed--
+        // } else { // up swipe
+        //   this.seed++
+        // }
+      }
+
+      xDown = null;
+      yDown = null;
+    });
+  }
+
   constructor() {
     super()
 
-    let touchstartX = 0
-    let touchendX = 0
-
-    const handleGesture = () => {
-      if (touchendX < touchstartX) this.date = this.date.add(1, 'day')
-      if (touchendX > touchstartX) this.date = this.date.add(-1, 'day')
-    }
-
-    this.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX
-    })
-
-    this.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX
-      handleGesture()
-    })
+    this.handleSwipe()
   }
 
   render() {

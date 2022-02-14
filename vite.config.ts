@@ -10,6 +10,7 @@ export default defineConfig({
         theme_color: '#dcf0ff',
         display: 'fullscreen',
         name: 'Baby Meal',
+        short_name: 'Baby Meal',
         lang: 'en',
         orientation: 'portrait'
       }
