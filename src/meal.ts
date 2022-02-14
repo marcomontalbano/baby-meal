@@ -2,7 +2,7 @@ import dayjs, { Dayjs } from 'dayjs'
 
 export type Protein = {
   name: string;
-  category: 'carne rossa' | 'carne bianca' | 'fish'
+  category: 'carne rossa' | 'carne bianca' | 'pesce'
 }
 
 export type Carbohydrate = {
@@ -19,44 +19,44 @@ type NotEmptyArrayOf<T> = [T, ...T[]]
 //   { name: 'Agnello', category: 'carne bianca' },
 //   { name: 'Manzo', category: 'carne rossa' },
 //   { name: 'Vitello', category: 'carne rossa' },
-//   { name: 'Nasello', category: 'fish' },
-//   { name: 'Spigola', category: 'fish' },
-//   { name: 'Salmone', category: 'fish' },
-//   { name: 'Orata', category: 'fish' },
-//   { name: 'Platessa', category: 'fish' },
-//   { name: 'Trota', category: 'fish' },
+//   { name: 'Nasello', category: 'pesce' },
+//   { name: 'Spigola', category: 'pesce' },
+//   { name: 'Salmone', category: 'pesce' },
+//   { name: 'Orata', category: 'pesce' },
+//   { name: 'Platessa', category: 'pesce' },
+//   { name: 'Trota', category: 'pesce' },
 // ]
 
 export const proteins: NotEmptyArrayOf<Protein> = [
   { name: 'Pollo', category: 'carne bianca' },
   { name: 'Coniglio', category: 'carne bianca' },
   { name: 'Manzo', category: 'carne rossa' },
-  { name: 'Nasello', category: 'fish' },
+  { name: 'Nasello', category: 'pesce' },
   
   { name: 'Tacchino', category: 'carne bianca' },
   { name: 'Agnello', category: 'carne bianca' },
   { name: 'Vitello', category: 'carne rossa' },
-  { name: 'Spigola', category: 'fish' },
+  { name: 'Spigola', category: 'pesce' },
   
   { name: 'Pollo', category: 'carne bianca' },
   { name: 'Coniglio', category: 'carne bianca' },
   { name: 'Manzo', category: 'carne rossa' },
-  { name: 'Salmone', category: 'fish' },
+  { name: 'Salmone', category: 'pesce' },
   
   { name: 'Tacchino', category: 'carne bianca' },
   { name: 'Agnello', category: 'carne bianca' },
   { name: 'Vitello', category: 'carne rossa' },
-  { name: 'Orata', category: 'fish' },
+  { name: 'Orata', category: 'pesce' },
 
   { name: 'Pollo', category: 'carne bianca' },
   { name: 'Coniglio', category: 'carne bianca' },
   { name: 'Manzo', category: 'carne rossa' },
-  { name: 'Platessa', category: 'fish' },
+  { name: 'Platessa', category: 'pesce' },
 
   { name: 'Tacchino', category: 'carne bianca' },
   { name: 'Agnello', category: 'carne bianca' },
   { name: 'Vitello', category: 'carne rossa' },
-  { name: 'Trota', category: 'fish' },
+  { name: 'Trota', category: 'pesce' },
 ]
 
 export const carbohydrates: Carbohydrate[] = [
