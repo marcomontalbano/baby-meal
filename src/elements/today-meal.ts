@@ -17,10 +17,10 @@ export class TodayMeal extends LitElement {
   static styles = css`
     :host {
       position: absolute;
-      top: 40px;
+      top: 60px;
       left: 0;
       width: 100%;
-      height: calc(100% - 40px);
+      height: calc(100% - 60px);
       background: rgb(161,214,252);
       background: linear-gradient(135deg, rgba(220,240,255,1) 0%, rgba(65,143,239,1) 50%, rgba(49,53,101,1) 50%, rgba(1,0,17,1) 100%);
       font-family: 'Montserrat', sans-serif;
@@ -28,12 +28,12 @@ export class TodayMeal extends LitElement {
     }
 
     .date {
-      height: 40px;
+      height: 60px;
       position: absolute;
-      top: -40px;
+      top: -60px;
       left: 0;
       width: 100%;
-      line-height: 40px;
+      line-height: 60px;
       text-align: center;
     }
 

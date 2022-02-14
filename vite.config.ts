@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [
     VitePWA({
       manifest: {
-        background_color: '#dcf0ff',
-        theme_color: '#dcf0ff',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
         display: 'standalone',
         name: 'Baby Meal',
         short_name: 'Baby Meal',
