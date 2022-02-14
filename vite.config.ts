@@ -8,7 +8,7 @@ export default defineConfig({
       manifest: {
         background_color: '#dcf0ff',
         theme_color: '#dcf0ff',
-        display: 'fullscreen',
+        display: 'standalone',
         name: 'Baby Meal',
         short_name: 'Baby Meal',
         lang: 'en',
