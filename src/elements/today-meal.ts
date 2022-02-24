@@ -86,7 +86,7 @@ export class TodayMeal extends LitElement {
   `
 
   @property({ type: Number })
-  seed = -7
+  seed = -9
 
   @property({ type: Dayjs })
   date = dayjs()
