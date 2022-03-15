@@ -12,58 +12,43 @@ export type Carbohydrate = {
 
 type NotEmptyArrayOf<T> = [T, ...T[]]
 
-// const proteinsA: NotEmptyArrayOf<Protein> = [
-//   { name: 'Pollo', category: 'carne bianca' },
-//   { name: 'Coniglio', category: 'carne bianca' },
-//   { name: 'Tacchino', category: 'carne bianca' },
-//   { name: 'Agnello', category: 'carne bianca' },
-//   { name: 'Manzo', category: 'carne rossa' },
-//   { name: 'Vitello', category: 'carne rossa' },
-//   { name: 'Nasello', category: 'pesce' },
-//   { name: 'Spigola', category: 'pesce' },
-//   { name: 'Salmone', category: 'pesce' },
-//   { name: 'Orata', category: 'pesce' },
-//   { name: 'Platessa', category: 'pesce' },
-//   { name: 'Trota', category: 'pesce' },
-// ]
-
 export const proteins: NotEmptyArrayOf<Protein> = [
   { name: 'Pollo', category: 'carne bianca' },
   { name: 'Coniglio', category: 'carne bianca' },
+  { name: 'Tacchino', category: 'carne bianca' },
+  { name: 'Agnello', category: 'carne bianca' },
   { name: 'Manzo', category: 'carne rossa' },
+  { name: 'Vitello', category: 'carne rossa' },
   { name: 'Nasello', category: 'pesce' },
-  
-  { name: 'Tacchino', category: 'carne bianca' },
-  { name: 'Agnello', category: 'carne bianca' },
-  { name: 'Vitello', category: 'carne rossa' },
   { name: 'Spigola', category: 'pesce' },
-  
-  { name: 'Pollo', category: 'carne bianca' },
-  { name: 'Coniglio', category: 'carne bianca' },
-  { name: 'Manzo', category: 'carne rossa' },
   { name: 'Salmone', category: 'pesce' },
-  
-  { name: 'Tacchino', category: 'carne bianca' },
-  { name: 'Agnello', category: 'carne bianca' },
-  { name: 'Vitello', category: 'carne rossa' },
   { name: 'Orata', category: 'pesce' },
-
-  { name: 'Pollo', category: 'carne bianca' },
-  { name: 'Coniglio', category: 'carne bianca' },
-  { name: 'Manzo', category: 'carne rossa' },
   { name: 'Platessa', category: 'pesce' },
-
-  { name: 'Tacchino', category: 'carne bianca' },
-  { name: 'Agnello', category: 'carne bianca' },
-  { name: 'Vitello', category: 'carne rossa' },
   { name: 'Trota', category: 'pesce' },
 ]
 
+const proteinsByCategory = Object.values(
+  proteins.reduce((acc, cv) => {
+    return {
+      ...acc,
+      [cv.category]: [
+        ...(acc[cv.category] || []),
+        cv
+      ]
+    }
+  }, {} as { [category: string]: Protein[] })
+)
+
 export const carbohydrates: Carbohydrate[] = [
   { name: 'Crema di Riso', category: 'crema' },
-  { name: 'Semolino', category: 'crema' },
+  { name: 'Pastina', category: 'pastina' },
   { name: 'Crema di Mais e Tapioca', category: 'crema' },
+  { name: 'Pastina', category: 'pastina' },
+  
+  { name: 'Semolino', category: 'crema' },
+  { name: 'Pastina', category: 'pastina' },
   { name: 'Crema Multicereali', category: 'crema' },
+  { name: 'Pastina', category: 'pastina' },
 ]
 
 type Options = {
@@ -91,8 +76,10 @@ function getMeal(options: Options = {}) {
 export function getLunchMeal(options: Options = {}): LunchMeal {
   const { halfJar, fullJar } = getMeal(options)
 
+  const proteinCategory = proteinsByCategory[halfJar % proteinsByCategory.length]
+
   return {
-    protein: proteins[halfJar % proteins.length],
+    protein: proteinCategory[Math.floor(halfJar / proteinsByCategory.length) % proteinCategory.length],
     carbohydrate: carbohydrates[fullJar % carbohydrates.length]
   }
 }
